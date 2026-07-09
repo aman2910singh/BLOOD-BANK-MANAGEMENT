@@ -22,6 +22,7 @@ public class Blood_Bank {
         int choice=5;
 
         Scanner sc=new Scanner(System.in);
+        Donor[] donors=new Donor[20];
         
         do{
             System.out.println("\n====BLOOD BANK MANAGEMENT SYSTEM====");
