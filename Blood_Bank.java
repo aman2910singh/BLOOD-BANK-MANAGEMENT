@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 class Donor {
@@ -23,6 +25,7 @@ public class Blood_Bank {
 
         Scanner sc=new Scanner(System.in);
         Donor[] donors=new Donor[20];
+        ArrayList<Donor> list=new ArrayList<>(Arrays.asList(donors));
         int donorCount=0;
         
         do{
@@ -94,9 +97,16 @@ public class Blood_Bank {
                                 System.out.println("Units are Not Available");
                             }
                             else{
-                                d.units-=reqUnits;
+                                d.units -= reqUnits;
                                 System.out.println("Blood is Issue Successfully");
-                                found4=true;
+                                found4 = true;
+                                if (d.units == 0) {
+                                    for (int j = i; j < donorCount - 1; j++) {
+                                        donors[j] = donors[j + 1];
+                                    }
+                                    donors[donorCount - 1] = null;
+                                    donorCount--;
+                                }
                             }
                             break;
                         }
